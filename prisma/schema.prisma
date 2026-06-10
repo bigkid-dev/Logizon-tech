@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("staff") // staff | admin | manager
+  avatar    String?
+  department String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  assignedTasks   Task[]          @relation("TaskAssignee")
+  managedProjects Project[]       @relation("ProjectManager")
+  sentMails       Mail[]          @relation("MailSender")
+  receivedMails   MailRecipient[]
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  aim         String
+  marketing   String
+  category    String   // edutech | fintech | faithtech | logistics | freelance | developers
+  stack       String[]
+  status      String   @default("active") // active | completed | archived
+  managerId   String
+  manager     User     @relation("ProjectManager", fields: [managerId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  tasks Task[]
+}
+
+model Task {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  section     String   // design | backend | web | mobile | others
+  status      String   @default("pending") // pending | in_progress | done
+  priority    String   @default("medium") // low | medium | high
+  dueDate     DateTime?
+  figmaUrl    String?
+  projectId   String
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  assigneeId  String?
+  assignee    User?    @relation("TaskAssignee", fields: [assigneeId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  aiGenerated Boolean  @default(false)
+}
+
+model Mail {
+  id          String          @id @default(cuid())
+  subject     String
+  body        String
+  senderId    String
+  sender      User            @relation("MailSender", fields: [senderId], references: [id])
+  recipients  MailRecipient[]
+  attachments String[]
+  sentAt      DateTime        @default(now())
+}
+
+model MailRecipient {
+  id     String @id @default(cuid())
+  mailId String
+  mail   Mail   @relation(fields: [mailId], references: [id], onDelete: Cascade)
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+  read   Boolean @default(false)
+}

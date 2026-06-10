@@ -28,13 +28,13 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", marginBottom: 20 }}>
-              <Image src="/logizon-log.png" alt="Logizon" width={36} height={36} style={{ filter: "invert(1)" }} />
+              <Image src="/logizon-logo.png" alt="Logizon" width={36} height={36} />
               <span style={{ fontFamily: "Space Grotesk, sans-serif", fontWeight: 700, fontSize: 16, color: "#fff" }}>LOGIZON</span>
             </Link>
-            <p style={{ color: "#555", fontSize: 13, lineHeight: 1.7, maxWidth: 280 }}>
+            <p style={{ color: "#fff", fontSize: 13, lineHeight: 1.7, maxWidth: 280 }}>
               Building Africa's next generation of technology companies across education, finance, faith, logistics, and beyond.
             </p>
-            <p style={{ color: "#333", fontSize: 12, marginTop: 20 }}>Ibadan, Oyo State, Nigeria</p>
+            <p style={{ color: "#333", fontSize: 12, marginTop: 20 }}>Abeokuta, Ogun State, Nigeria</p>
           </div>
 
           {/* Divisions */}
@@ -42,10 +42,9 @@ export default function Footer() {
             <h4 style={{ color: "#fff", fontSize: 12, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}>Divisions</h4>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {divisions.map(d => (
-                <Link key={d.href} href={d.href} style={{ color: "#555", fontSize: 13, textDecoration: "none", transition: "color 0.15s" }}
-                  onMouseEnter={e => (e.target as HTMLElement).style.color = "#aaa"}
-                  onMouseLeave={e => (e.target as HTMLElement).style.color = "#555"}
-                >{d.label}</Link>
+                <Link key={d.href} href={d.href} style={{ color: "#fff", fontSize: 13, textDecoration: "none" }}>
+                  {d.label}
+                </Link>
               ))}
             </div>
           </div>
@@ -55,11 +54,9 @@ export default function Footer() {
             <h4 style={{ color: "#fff", fontSize: 12, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}>Products</h4>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {products.map(p => (
-                <Link key={p.label} href={p.href} target={p.external ? "_blank" : undefined}
-                  style={{ color: "#555", fontSize: 13, textDecoration: "none", transition: "color 0.15s" }}
-                  onMouseEnter={e => (e.target as HTMLElement).style.color = "#aaa"}
-                  onMouseLeave={e => (e.target as HTMLElement).style.color = "#555"}
-                >{p.label}</Link>
+                <Link key={p.label} href={p.href} target={p.external ? "_blank" : undefined} style={{ color: "#fff", fontSize: 13, textDecoration: "none" }}>
+                  {p.label}
+                </Link>
               ))}
             </div>
           </div>
@@ -69,10 +66,9 @@ export default function Footer() {
             <h4 style={{ color: "#fff", fontSize: 12, fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 20 }}>Company</h4>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {[{ label: "About", href: "/about" }, { label: "Products", href: "/products" }, { label: "Careers", href: "/about#careers" }, { label: "Contact", href: "/contact" }].map(item => (
-                <Link key={item.href} href={item.href} style={{ color: "#555", fontSize: 13, textDecoration: "none", transition: "color 0.15s" }}
-                  onMouseEnter={e => (e.target as HTMLElement).style.color = "#aaa"}
-                  onMouseLeave={e => (e.target as HTMLElement).style.color = "#555"}
-                >{item.label}</Link>
+                <Link key={item.href} href={item.href} style={{ color: "#fff", fontSize: 13, textDecoration: "none" }}>
+                  {item.label}
+                </Link>
               ))}
             </div>
           </div>

@@ -1,32 +1,42 @@
-const stats = [
-  { value: "6", label: "Technology Divisions" },
-  { value: "10+", label: "Products Shipped" },
-  { value: "50K+", label: "Users Across Platforms" },
-  { value: "2019", label: "Founded in Nigeria" },
-];
-
+// components/StatsSection.tsx
 export default function StatsSection() {
+  const stats = [
+    { value: "6", label: "Divisions" },
+    { value: "10+", label: "Products" },
+    { value: "50K+", label: "Users" },
+    { value: "2019", label: "Founded" }
+  ];
+
   return (
-    <section style={{ padding: "120px 24px", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-        <p style={{ textAlign: "center", fontSize: 11, fontWeight: 600, letterSpacing: "0.2em", textTransform: "uppercase", color: "#444", marginBottom: 64 }}>
-          By the numbers
-        </p>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 40 }}>
-          {stats.map(s => (
-            <div key={s.label} style={{ textAlign: "center" }}>
-              <p style={{
-                fontFamily: "Space Grotesk, sans-serif",
-                fontWeight: 700,
-                fontSize: "clamp(2.5rem, 4vw, 4rem)",
-                letterSpacing: "-0.04em",
-                color: "#fff",
-                marginBottom: 8,
-              }}>{s.value}</p>
-              <p style={{ fontSize: 13, color: "#444", letterSpacing: "0.02em" }}>{s.label}</p>
+    <section style={{
+      padding: "80px 32px",
+      borderTop: "1px solid #eee",
+      background: "white"
+    }}>
+      <div style={{
+        maxWidth: 1280,
+        margin: "0 auto",
+        display: "flex",
+        justifyContent: "space-between",
+        flexWrap: "wrap",
+        gap: 40,
+        textAlign: "center"
+      }}>
+        {stats.map(s => (
+          <div key={s.label} style={{ flex: 1, minWidth: 120 }}>
+            <div style={{
+              fontSize: "clamp(36px, 6vw, 56px)",
+              fontWeight: 600,
+              color: "#171717",
+              marginBottom: 8
+            }}>
+              {s.value}
             </div>
-          ))}
-        </div>
+            <div style={{ fontSize: 13, color: "#999", letterSpacing: "1px" }}>
+              {s.label}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

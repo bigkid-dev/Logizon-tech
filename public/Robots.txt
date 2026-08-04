@@ -1,0 +1,25 @@
+# robots.txt for logizon.com.ng
+# Logizon Technologies — https://www.logizon.com.ng
+# Generated: 2026-08-04
+
+# ──────────────────────────────────────────────
+# Allow all crawlers — search engines & AI bots
+# Logizon is a software company building across
+# Edtech, Fintech, FaithTech, Logistics, and
+# developer tooling for African markets.
+# Our products are passcbt, examsling, 
+# We want to be found — by humans and AI alike.
+# ──────────────────────────────────────────────
+User-agent: *
+Allow: /
+
+# Block Next.js internals — build artifacts, not content
+Disallow: /_next/
+
+# Block any backend API routes from indexing
+Disallow: /api/
+
+# ──────────────────────────────────────────────
+# Sitemap
+# ──────────────────────────────────────────────
+Sitemap: https://www.logizon.com.ng/sitemap.xml
